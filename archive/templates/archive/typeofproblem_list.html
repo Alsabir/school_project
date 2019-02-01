@@ -1,0 +1,28 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Список типов задач</h1>
+  {% if typeofproblem_list %}
+  <ul>
+    {% for type in typeofproblem_list %}
+      <li>
+        <div class = 'row'>
+          <div class = 'col-md-6'>
+            {{ type }} 
+          </div>
+          <div class = 'col-md-4'>
+            <a href = "{%url 'type-of-problem-update' type.id%}">Изменить название</a> 
+          </div>
+          <div class = 'col-md-2'>
+            <a href = "{%url 'type-of-problem-delete' type.id %}"> Удалить </a> 
+          </div>  
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>Ни одного типа задач в архиве.</p>
+  {% endif %}   
+  <a href="{%url 'type-of-problem-create'%}"> Добавить тип задач </a>
+
+{% endblock %}

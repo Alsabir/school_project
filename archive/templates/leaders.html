@@ -1,0 +1,51 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1 class = 'indent-bottom-large'> Таблица лидеров </h1>
+<div class = 'row indent-bottom-little'>
+	<div class = 'col-md-2'>
+		<h4>№</h4>
+	</div>
+	<div class = 'col-md-8'>
+		<h4>Пользователь</h4>
+	</div>
+	<div class = 'col-md-2'>
+		<h4> Счёт </h4>
+	</div>
+</div>			
+{% for profile in enumerated_list %}
+{% if profile.position == user_position %}
+	<div class = 'row in-top'>
+{% else %}
+	<div class = 'row'>
+{% endif %}	
+		<div class = 'col-md-2'>
+			<p>{{profile.position}}</p>
+		</div>
+		<div class = 'col-md-8'>
+			<p>{{profile.item.user}}</p>
+		</div>
+		<div class = 'col-md-2'>
+			<p>{{profile.item.total_score}}</p>
+		</div>
+	</div>		
+{% endfor %}
+
+{% if not is_in_top_10 %}
+	<p> ... </p>
+	<div class = 'row' style = 'background-color: #79ff5b; width: 75%'>
+		<div class = 'col-md-2'>
+			<p>{{user_position}}</p>
+		</div>
+		<div class = 'col-md-8'>
+			<p>{{user_profile.user}}</p>
+		</div>
+		<div class = 'col-md-2'>
+			<p>{{user_profile.total_score}}</p>
+		</div>
+	</div>	
+{% endif %}
+
+
+
+{% endblock %}

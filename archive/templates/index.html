@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block content %}
+  <h1>Математическая платформа</h1>
+  <p>Добро пожаловать, здесь начинается ваш путь к знаниям!</p>
+  <h2>Динамический контент</h2>
+  <p>Платформа имеет следующие данные:</p>
+  <ul>
+    <li><strong>Количество задач:</strong> {{ num_problems }}</li>
+    <li><strong>Количество пользователей:</strong> {{ num_users }}</li>
+  </ul>
+{% endblock %}

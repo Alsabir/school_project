@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  	<h2>Регистрация</h2>
+    <p> Введите следующие данные </p>
+    <br />
+	<form action="" method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Отправить">
+	</form>
+{% endblock %}

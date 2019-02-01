@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1> {{ problem.title }}</h1>
+  {% if problem.image_attached %}
+  <img src = "{{problem.image_attached.url}}" height = '400' width = '400'/>  
+  {% endif %}
+  <p> {{ problem.description }} </p>
+  <p class = 'text-muted'> {% for type in problem.type_of_problem.all %} {{ type }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+  {% if not perms.archive.can_assess %}
+  <h3> <a href = "{% url 'send-solution' problem.id %}">Отослать решение </a> </h3>
+  {% else %}
+  <div class = 'row'>
+  	<div class = 'col-sm-4'>
+        <a href = "{%url 'problem-update' problem.id%}">Изменить задачу</a> 
+    </div>
+    <div class = 'col-sm-4'>
+        <a href = "{%url 'problem-delete' problem.id %}"> Удалить </a> 
+    </div>  
+  </div>
+  {% endif %}
+       
+{% endblock %}

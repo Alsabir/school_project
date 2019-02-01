@@ -1,0 +1,71 @@
+.sidebar-nav {
+	list-style: none;
+	margin-top: 20px;
+	padding: 0;
+}
+
+
+.main-bg {
+	background-image: url('/static/images/bg4.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+
+} 
+
+
+.white-color{
+	background-color: #ffffff;
+	opacity: 0.8;
+}
+
+.full-screen{
+	min-height: 100vh;
+}
+
+
+
+html{
+	height: 100%;
+}
+
+body{
+	height: 100%;
+}
+
+.sidebar-fixed{
+	
+}
+
+
+
+
+.indent-bottom-little{
+	margin-bottom: 15px;
+}
+
+.indent-bottom-large{
+	margin-bottom: 50px;
+}
+
+
+
+
+
+.content{
+	margin-left: 20px;
+	padding-top: 10px;
+}
+
+.problem-list{
+	list-style: none;
+	margin-top: 30px;
+	padding-left: 10px;
+}
+
+.problem-list>li{
+	margin-top: 15px;
+}
+
+
+
+

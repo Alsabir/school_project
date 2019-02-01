@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1 style = 'margin-bottom: 50px'> Рекомендации </h1>
+
+	{% if recommendations %}
+	{% for problem in recommendations %}
+		<p><a href = {{problem.get_absolute_url}}> {{problem}} </a></p>
+	{% endfor %}	
+	{% else %}
+		<p>Система затрудняется дать вам рекомендации</p>
+	{% endif %}
+	
+
+
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1> Это профиль пользователя {{ user }} </h1>
+<p> Общий счет пользователя за решенные задачи : {{user.profiledata.total_score}} </p>
+<p>
+	{% if list_of_solutions %}
+		Ваши решенные задачи:
+		{% for solution in list_of_solutions %} 
+		<div class = 'row'>
+			<div class = 'col-md-3'>
+				<a href = '{{solution.get_absolute_url}}'>{{solution.problem}}</a>
+			</div>
+		</div>
+		{% endfor %}	
+	{% else %}
+		Вы не решили ни одной задачи
+	{% endif %}	
+</p>
+<p>
+	{% if most_solved_types %}
+		Ваши самые решаемые типы задач: {% for type in most_solved_types %} {{ type }} {% if not forloop.last %}, {% endif %}{% endfor %}
+	{% endif %}	
+</p>
+
+
+{% endblock %}

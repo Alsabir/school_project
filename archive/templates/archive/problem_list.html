@@ -1,0 +1,36 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Список задач</h1>
+  {% if problem_list %}
+  <ul class = 'problem-list'>
+    {% for problem in problem_list %}
+      <li>
+        <div class = 'row'>
+          <div class = 'col-sm-8'>
+            <a href="{{problem.get_absolute_url}}">{{ problem.title }}</a> ( {% for type in problem.type_of_problem.all %} {{ type }}{% if not forloop.last %}, {% endif %}{% endfor %}) 
+          </div>
+          {% if perms.archive.can_assess %}
+          <div class = 'col-sm-2'>
+            <a href = "{%url 'problem-update' problem.id%}">Изменить</a> 
+          </div>
+          <div class = 'col-sm-2'>
+            <a href = "{%url 'problem-delete' problem.id %}"> Удалить </a> 
+          </div>  
+          {% else %}
+          <div class = 'col-sm-3 offset-sm-1'>
+            <a href = "{% url 'send-solution' problem.id %}"> Отослать решение </a>
+          </div>
+          {% endif %}  
+        </div>
+
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>Ни одной задачи в архиве.</p>
+  {% endif %}
+  {% if perms.archive.can_assess %}
+  <h4><a href = "{%url 'problem-create'%}">Добавить задачу</a></h4> 
+  {% endif %}      
+{% endblock %}

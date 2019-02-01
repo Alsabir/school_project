@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h2>Список всех решенных задач:</h2>
+
+ {% if solution_list %}
+    <ul>    	
+      {% for solution in solution_list %} 
+      <li class="{% if solution.is_checked %}text-success{% endif %}">
+        {{solution.problem.title}} {% if solution.is_checked %}[{{solution.evaluation.score}}/7]{% endif %} &nbsp
+        <a href = "{% url 'solution-detail' solution.id %}" >Просмотреть</a>
+      </li>
+      {% endfor %}
+    </ul>
+ {% else %}
+ 	<p>Вы не решили ни одной задачи</p>   
+ {% endif %}   
+
+{% endblock %}

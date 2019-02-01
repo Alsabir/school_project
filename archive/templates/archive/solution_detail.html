@@ -1,0 +1,50 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  
+{% if perms.archive.can_assess or user == solution.user.user %}
+
+
+  {% if solution.evaluation %}
+  <h3 class = 'text-danger'> Ваше решение уже проверено. Вы больше не можете изменить свое решение. </h3>
+  {% endif %}
+
+  <h1> Задача: {{ solution.problem.title }}. Решил: {{solution.user}} </h1>
+  <br/>
+  <span class = 'text-muted'>
+  	{% if solution.problem.image_attached %}
+	<img src = "{{solution.problem.image_attached.url}}" height = '400' width = '400'/>  
+	{% endif %}
+	{% if solution.problem.description %}
+	<p> Условия задачи: {{ solution.problem.description }} </p>
+	{% endif %}
+	<p> {% for type in solution.problem.type_of_problem.all %} {{ type }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+  </span>
+  <br/>
+
+
+
+  {% if solution.image_attached %}
+  <img src = "{{solution.image_attached.url}}" height = '400' width = '400'/>  
+  {% endif %}
+  <p> {{solution.text}} </p>
+  <p class = 'text-muted'> {{solution.date_of_creation}} </p>
+
+  {% if solution.is_checked %}
+  <h3>Комментарий модератора {{solution.evaluation.examiner}}:</h3>
+  <p style = "margin-left:20px"> {{solution.evaluation.comment}} </p>
+  <p style = "text-align:right; margin-right:40px"> [{{solution.evaluation.score}}/7]</p>
+  <p> Проверено {{solution.evaluation.date_of_creation}} </p>
+  {% else %}
+    {% if perms.archive.can_assess %}
+      <a href='{% url "evaluate" solution.id %}'>Оценить </a>
+    {% endif %}
+  {% endif %}    
+
+{% else %}
+  <h2 style = 'margin-top : 20px'> У вас нет прав смотреть решение другого пользователя </h2>
+{% endif %} 
+
+
+
+{% endblock %}
