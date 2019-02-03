@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','hp9&2a5h+_7$p$i@g(npym2ai828a0^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['desolate-stream-58852.herokuapp.com']
+ALLOWED_HOSTS = ['desolate-stream.herokuapp.com']
 
 
 # Application definition
