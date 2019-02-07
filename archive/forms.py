@@ -8,7 +8,7 @@ class UserRegistrationForm(forms.Form):
 	password = forms.CharField(label = 'Пароль', label_suffix = ':',widget = forms.PasswordInput)
 	first_name = forms.CharField(label = 'Имя', label_suffix = ':', required = False)
 	last_name = forms.CharField(label = 'Фамилия', label_suffix = ':',required = False)
-	email = forms.EmailField(label = 'Адресс элекронной почты', label_suffix = ':')
+	email = forms.EmailField(label = 'Адрес элекронной почты', label_suffix = ':')
 
 	def clean_username(self):
 		username = self.cleaned_data['username']
